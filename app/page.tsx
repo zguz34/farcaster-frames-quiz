@@ -31,6 +31,7 @@ export default function Page() {
       <h2>If you want to debug the frame: </h2>
       <p>* Deploy the app on vercel and test it with https://warpcast.com/~/developers/frames</p>
       <p>* From frames.js, run framesjs-starter locally and use http://localhost:3000 url</p>
+      <img src="demo.gif"></img>
     </>
   );
 }
