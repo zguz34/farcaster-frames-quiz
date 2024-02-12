@@ -12,10 +12,10 @@ const frameMetadata = getFrameMetadata({
 });
 
 export const metadata: Metadata = {
-  title: 'How many capitals can you recognize?',
-  description: 'Farcaster frame quiz',
+  title: 'Quiz farcaster frame',
+  description: 'Beginning of the quiz',
   openGraph: {
-    title: 'How many capitals can you recognize',
+    title: 'Quiz farcaster frame',
     description: 'Beginning of the quiz',
     images: [`${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}/ipfs/QmYZgqhhhJJJh897Q7X65dg2YAgsbfUxm74aqNnc6SdXe7/start.png`],
   },
