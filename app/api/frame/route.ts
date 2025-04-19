@@ -69,15 +69,14 @@ export async function POST(req: NextRequest): Promise<Response> {
   </head></html>`);
 }
 
-export const dynamic = 'force-dynamic';
 export async function GET(req: NextRequest): Promise<Response> {
   return new NextResponse(`<!DOCTYPE html><html><head>
-    <title>Welcome to Blockchain Hogwarts</title>
     <meta property="fc:frame" content="vNext" />
-    <meta property="fc:frame:image" content="https://placekitten.com/1200/630" />
+    <meta property="fc:frame:image" content="https://i.imgur.com/Tkbkig1.png" />
     <meta property="fc:frame:button:1" content="Start Sorting" />
     <meta property="fc:frame:post_url" content="${process.env.NEXT_PUBLIC_BASE_URL}/api/frame" />
     <meta property="fc:frame:image:aspect_ratio" content="1.91:1" />
-  </head></html>`);
+  </head><body></body></html>`);
 }
+
 
