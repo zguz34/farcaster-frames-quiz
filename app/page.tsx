@@ -44,9 +44,9 @@ const results = {
 
 export default function Page() {
   useEffect(() => {
-    window?.parent?.postMessage({ type: 'ready' }, '*');
-
+    window.parent.postMessage({ type: 'ready' }, '*');
   }, []);
+  
 
   const [step, setStep] = useState(-1); // -1 shows intro
   const [score, setScore] = useState({
