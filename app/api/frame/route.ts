@@ -84,7 +84,7 @@ export async function POST(req: NextRequest): Promise<Response> {
     <meta property="fc:frame:button:2" content="${answerOptions[id - 1][1]}" />
     <meta property="fc:frame:button:3" content="${answerOptions[id - 1][2]}" />
     <meta property="fc:frame:image:aspect_ratio" content="1.91:1" />
-    <meta property="fc:frame:post_url" content="${process.env.NEXT_PUBLIC_BASE_URL}/api/frame?${queryParams}" />
+<meta property="fc:frame:post_url" content="${baseUrl}/api/frame?${queryParams}" />
   </head></html>`);
 }
 
