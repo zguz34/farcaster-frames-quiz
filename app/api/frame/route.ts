@@ -22,6 +22,8 @@ const answerMappings = [
   ['bitcoin', 'solana', 'avalanche'], // Q2
   ['solana', 'avalanche', 'ethereum'], // Q3
   ['ethereum', 'bitcoin', 'solana'], // Q4
+  ['solana', 'ethereum', 'bitcoin'], // Q5
+
 ];
 
 const answerOptions = [
@@ -29,6 +31,8 @@ const answerOptions = [
   ['Regulate', 'Build', 'Ignore'],
   ['Brag on CT', 'Code quietly', 'Shill memes'],
   ['Flip JPEGs', 'Ship DeFi', 'Hold BTC'],
+  ['Only if they dump the token.', 'No. Code is law.', "I am Michael Saylor, I'm above the law."],
+
 ];
 
 export async function POST(req: NextRequest): Promise<Response> {
@@ -43,7 +47,14 @@ export async function POST(req: NextRequest): Promise<Response> {
   currentScores[updatedHouse as keyof typeof currentScores] += 1;
   if (id >= answerOptions.length) {
     const house = getHouseResult(currentScores);
-    const imageUrl = `${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}/ipfs/${house}.png`;
+    const resultImages: Record<string, string> = {
+      bitcoin: 'https://i.imgur.com/zQCfXiS.png',
+      ethereum: 'https://i.imgur.com/jsHhCJU.png',
+      solana: 'https://i.imgur.com/A135ToH.png',
+      avalanche: 'https://i.imgur.com/XGKf6Iz.png',
+    };
+    const imageUrl = resultImages[house];
+    
 
     return new NextResponse(`<!DOCTYPE html><html><head>
       <title>Your Chain House</title>
@@ -55,7 +66,15 @@ export async function POST(req: NextRequest): Promise<Response> {
   }
 
   const queryParams = `id=${nextId}&solana=${currentScores.solana}&ethereum=${currentScores.ethereum}&bitcoin=${currentScores.bitcoin}&avalanche=${currentScores.avalanche}`;
-  const imageUrl = `${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}/ipfs/q${id}.png`;
+  const questionImages = [
+    'https://i.imgur.com/TPx5JQH.png', // Q1
+    'https://i.imgur.com/VieOz1U.png', // Q2
+    'https://i.imgur.com/GRza507.png', // Q3
+    'https://i.imgur.com/VP8KZnj.png', // Q4
+    'https://i.imgur.com/4IUt3U8.png', // Q5
+  ];
+  const imageUrl = questionImages[id - 1];
+  
 
   return new NextResponse(`<!DOCTYPE html><html><head>
     <title>Question ${id}</title>
