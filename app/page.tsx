@@ -1,7 +1,7 @@
 // app/page.tsx
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 const questions = [
@@ -45,7 +45,12 @@ const results = {
 };
 
 export default function Page() {
+  useEffect(() => {
+    window.parent.postMessage({ type: 'frameReady' }, '*');
+  }, []);
+
   const [step, setStep] = useState(0);
+
   const [score, setScore] = useState({
     solana: 0,
     ethereum: 0,
