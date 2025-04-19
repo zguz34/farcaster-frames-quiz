@@ -1,0 +1,15 @@
+{
+    "version": "vNext",
+    "name": "Blockchain Hogwarts",
+    "description": "Sort yourself into your crypto house 🪄",
+    "icons": ["https://i.imgur.com/bf63Ujd.png"],
+    "developer": {
+      "name": "Coinage",
+      "url": "https://coinage.media"
+    },
+    "app": {
+      "initialPath": "/",
+      "navigation": "stack"
+    }
+  }
+  
