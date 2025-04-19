@@ -44,8 +44,13 @@ const results = {
 
 export default function Page() {
   useEffect(() => {
-    window.parent.postMessage({ type: 'ready' }, '*');
+    // Farcaster Mini App splash screen hide
+    window.parent?.postMessage({ type: 'ready' }, '*');
+  
+    // Legacy Frame fallback just in case
+    window.parent?.postMessage({ type: 'frameReady' }, '*');
   }, []);
+  
   
 
   const [step, setStep] = useState(-1); // -1 shows intro
