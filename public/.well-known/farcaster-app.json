@@ -1,0 +1,14 @@
+{
+    "id": "hogwarts-house-sorter",
+    "name": "Blockchain Hogwarts",
+    "icon": "https://i.imgur.com/bf63Ujd.png",
+    "description": "Get sorted into your crypto house.",
+    "aboutUrl": "https://farcaster-frames-quiz-eta.vercel.app",
+    "website": "https://farcaster-frames-quiz-eta.vercel.app",
+    "frames": [
+      {
+        "path": "/"
+      }
+    ]
+  }
+  
