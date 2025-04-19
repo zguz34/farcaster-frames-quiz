@@ -1,39 +1,37 @@
-// app/page.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 
 const questions = [
   {
     text: 'What matters most to you?',
     options: ['Speed', 'Security', 'Decentralization'],
     mapping: ['solana', 'ethereum', 'bitcoin'],
-    image: 'https://i.imgur.com/TPx5JQH.png'
+    image: 'https://i.imgur.com/TPx5JQH.png',
   },
   {
     text: 'How should we handle crypto regulation?',
     options: ['Regulate', 'Build', 'Ignore'],
     mapping: ['bitcoin', 'solana', 'avalanche'],
-    image: 'https://i.imgur.com/VieOz1U.png'
+    image: 'https://i.imgur.com/VieOz1U.png',
   },
   {
     text: 'What’s your vibe?',
     options: ['Brag on CT', 'Code quietly', 'Shill memes'],
     mapping: ['solana', 'avalanche', 'ethereum'],
-    image: 'https://i.imgur.com/GRza507.png'
+    image: 'https://i.imgur.com/GRza507.png',
   },
   {
     text: 'What’s your favorite crypto pastime?',
     options: ['Flip JPEGs', 'Ship DeFi', 'Hold BTC'],
     mapping: ['ethereum', 'bitcoin', 'solana'],
-    image: 'https://i.imgur.com/VP8KZnj.png'
+    image: 'https://i.imgur.com/VP8KZnj.png',
   },
   {
     text: 'Should you be allowed to use unforgivable spells on your enemies?',
     options: ['Only if they dump the token.', 'No. Code is law.', "I am Michael Saylor, I'm above the law."],
     mapping: ['solana', 'ethereum', 'bitcoin'],
-    image: 'https://i.imgur.com/4IUt3U8.png'
+    image: 'https://i.imgur.com/4IUt3U8.png',
   },
 ];
 
@@ -41,7 +39,7 @@ const results = {
   bitcoin: 'https://i.imgur.com/zQCfXiS.png',
   ethereum: 'https://i.imgur.com/jsHhCJU.png',
   solana: 'https://i.imgur.com/A135ToH.png',
-  avalanche: 'https://i.imgur.com/XGKf6Iz.png'
+  avalanche: 'https://i.imgur.com/XGKf6Iz.png',
 };
 
 export default function Page() {
@@ -49,8 +47,7 @@ export default function Page() {
     window.parent.postMessage({ type: 'frameReady' }, '*');
   }, []);
 
-  const [step, setStep] = useState(0);
-
+  const [step, setStep] = useState(-1); // -1 shows intro
   const [score, setScore] = useState({
     solana: 0,
     ethereum: 0,
@@ -70,6 +67,24 @@ export default function Page() {
     return winner;
   };
 
+  // 🧙 Intro screen
+  if (step === -1) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen p-6 text-center">
+        <h1 className="text-3xl font-bold mb-4">🪄 Welcome to Blockchain Hogwarts</h1>
+        <p className="text-lg mb-6">Answer 5 questions to discover your crypto house.</p>
+        <img src="https://i.imgur.com/bf63Ujd.png" alt="Hogwarts Crest" className="rounded-xl max-w-xl shadow-md mb-6" />
+        <button
+          onClick={() => setStep(0)}
+          className="px-6 py-3 bg-purple-700 text-white rounded-lg hover:bg-purple-800 transition"
+        >
+          Start Sorting
+        </button>
+      </div>
+    );
+  }
+
+  // 🏆 Results screen
   if (step >= questions.length) {
     const winner = getWinner();
     return (
@@ -79,7 +94,7 @@ export default function Page() {
         <button
           className="mt-6 px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
           onClick={() => {
-            setStep(0);
+            setStep(-1);
             setScore({ solana: 0, ethereum: 0, bitcoin: 0, avalanche: 0 });
           }}
         >
@@ -89,6 +104,7 @@ export default function Page() {
     );
   }
 
+  // ❓ Question screen
   const q = questions[step];
   return (
     <div className="flex flex-col items-center p-4">
