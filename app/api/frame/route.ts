@@ -1,5 +1,6 @@
 // route.ts
 import { NextRequest, NextResponse } from 'next/server';
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL?.replace(/\/+$/, '');
 
 function getHouseResult(score: Record<string, number>) {
   const max = Math.max(...Object.values(score));
@@ -67,7 +68,8 @@ export async function POST(req: NextRequest): Promise<Response> {
       <meta property="fc:frame" content="vNext" />
       <meta property="fc:frame:image" content="${imageUrl}" />
       <meta property="fc:frame:button:1" content="Play Again" />
-      <meta property="fc:frame:post_url" content="${process.env.NEXT_PUBLIC_BASE_URL}/api/frame" />
+      <meta property="fc:frame:post_url" content="${baseUrl}/api/frame" />
+
     </head></html>`);
   }
 
@@ -91,7 +93,8 @@ export async function GET(req: NextRequest): Promise<Response> {
     <meta property="fc:frame" content="vNext" />
     <meta property="fc:frame:image" content="https://i.imgur.com/bf63Ujd.png" />
     <meta property="fc:frame:button:1" content="Start Sorting" />
-    <meta property="fc:frame:post_url" content="${process.env.NEXT_PUBLIC_BASE_URL}/api/frame?id=1&solana=0&ethereum=0&bitcoin=0&avalanche=0" />
+    <meta property="fc:frame:post_url" content="${baseUrl}/api/frame?id=1&solana=0&ethereum=0&bitcoin=0&avalanche=0" />
+
     <meta property="fc:frame:image:aspect_ratio" content="1.91:1" />
   </head><body></body></html>`);
 }
