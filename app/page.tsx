@@ -44,7 +44,8 @@ const results = {
 
 export default function Page() {
   useEffect(() => {
-    window.parent.postMessage({ type: 'frameReady' }, '*');
+    window?.parent?.postMessage({ type: 'ready' }, '*');
+
   }, []);
 
   const [step, setStep] = useState(-1); // -1 shows intro
