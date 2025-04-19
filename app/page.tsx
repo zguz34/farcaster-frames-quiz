@@ -1,12 +1,22 @@
-export default function Home() {
+export default function Page() {
   return (
-    <div style={{ textAlign: 'center', marginTop: '100px' }}>
-      <h1>Welcome to Blockchain Hogwarts 🧙‍♂️</h1>
-      <p>This is the onchain Sorting Quiz built for Farcaster Frames</p>
-      <a href="/api/frame?id=1">
-        <button style={{ padding: '12px 24px', fontSize: '16px', marginTop: '20px' }}>
-          Start Sorting
-        </button>
+    <div style={{ padding: '2rem', fontFamily: 'sans-serif', textAlign: 'center' }}>
+      <h1>🪄 Welcome to Blockchain Hogwarts</h1>
+      <p>Discover your crypto destiny by answering a few questions.</p>
+      <a
+        href="/api/frame"
+        style={{
+          display: 'inline-block',
+          marginTop: '1.5rem',
+          padding: '1rem 2rem',
+          fontSize: '1.25rem',
+          backgroundColor: '#4B0082',
+          color: '#fff',
+          borderRadius: '8px',
+          textDecoration: 'none',
+        }}
+      >
+        Start Sorting 🧙‍♂️
       </a>
     </div>
   );
